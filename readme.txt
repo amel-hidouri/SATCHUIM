@@ -1,7 +1,7 @@
- ######################################################################
+ 					######################################################################
 					SATCHUIM: SAT-based Closed High Utility Itemset Mining 
 					Coded by Said Jabbour, Amel Hidouri,   e-mail:{jabbour,hidouri}@cril.fr 
-				######################################################################
+					######################################################################
 
 
 The code in this repository was written in  C++ using miniSAT solver for model enumeration.
