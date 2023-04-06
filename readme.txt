@@ -83,15 +83,14 @@ Remark: In typical transaction database for utility mining (found in SPMF https:
 the output is:
 
 **********************************************************************************************************************************************************
------------------------------------------------------------------------------------------------------------------------
-|                                SATCHUIM Solver v1.0. -- SAT-based Closed High Utility Itemset Mining  --                                                |
+ -----------------------------------------------------------------------------------------------------------------------
+|                                SATCHUIM Solver v1.0. -- SAT-based Closed High Utility Itemset Mining                                                |
  -----------------------------------------------------------------------------------------------------------------------
  ===============================================[ Problem Statistics ]==================================================
 |                                                                                                                       |
-<> SATCHUIM: SAT-based Closed High Utility Itemset Mining 
+<> SATCHUIM: SAT-based Closed High Utility Itemset Mining
 <> minUtil  : 650000 
 <> instance    : ../instance/chess.txt
-<> nbThreads   : 1 
 <> closed?     : 1 
 
 ----------------------------------------------------------------------------
@@ -102,31 +101,22 @@ the output is:
 --------------------------------------------------------------------------
 
 <> start enumeration
-|  Number of cores:                 1                                                                                   |
 |  Number of variables:            75                                                                                   |
-|  Number of clauses:               0                                                                                   |
 |  Parse time:                   0.01 s                                                                                 |
 |                                                                                                                       |
- ==============================================[ Search Statistics ]====================================================
-|   Thread  | Conflicts |          ORIGINAL         |          LEARNT          |  exported  / imported      |  Progress |
-|    (id)   |           |    Vars  Clauses Literals |    Limit  Clauses Lit/Cl |  (clauses by restart)      |           |
- =======================================================================================================================
  =======================================================================================================================
 -----------------------------------------------
-thread | nb models          | nb conflicts    |
+  nb models          | nb conflicts    |
 -----------------------------------------------
-   0   |                46  | 1466 
------------------------------------------------
-total  |              46    | 
------------------------------------------------
+               46  | 1466 
 #total Clauses  :         4000404     
   ----------------------------------------         
   ----------------------------------------         
   restarts              : 1
-  conflicts             : 1466           (1785 /sec)
-  decisions             : 1508           (0.00 % random) (1837 /sec)
-  propagations          : 3370583        (4105035 /sec)
+  conflicts             : 1466           (1793 /sec)
+  decisions             : 1508           (0.00 % random) (1845 /sec)
+  propagations          : 3370583        (4123542 /sec)
   conflict literals     : 0              (-nan % deleted)
-  CPU time              : 0.821085 s
+  CPU time              : 0.8174 s
 
 SATISFIABLE
