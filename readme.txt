@@ -78,7 +78,7 @@ Remark: In typical transaction database for utility mining (found in SPMF https:
 ################################
 - to find all closed high utility itemsets in "chess.txt" in instance folder,  for minimum utility no less than 650000:
 
- ./SATCHUIM -minutil=650000 -closed=1 ../instance/chess.txt 
+ ./SATCHUIM -minutil=650000 -closed=1 ../datasets/chess.txt 
 
 the output is:
 
@@ -86,7 +86,7 @@ the output is:
  ===============================================[ Problem Statistics ]==================================================
 <> SATCHUIM : SAT-based Closed High Utility Itemset Mining
 <> minUtil : 650000 
-<> instance : ../instance/chess.txt
+<> instance : ../datasets/chess.txt
 <> closed? : 1 
 
 ---------------------------------------------------------------------------------------------------
