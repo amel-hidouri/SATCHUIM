@@ -39,7 +39,7 @@ A  transactional data is  in the form of a text file with each line representing
 - The total utility of items in this transaction.
 - The utility of each item of this transaction.
 
-The input file is a CNF where each line ends with a 0 (zero). This is an example of  a  line in the cnf input file:
+The input file is a CNF formula where each line ends with a 0 (zero). This is an example of  a  line in the cnf input file:
 1 2 3 4  -1 26 -1 5 6 7 8 0
 
 which means that:
