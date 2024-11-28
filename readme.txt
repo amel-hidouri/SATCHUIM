@@ -16,10 +16,6 @@
 ## Problem Definition  
 
 Let **I** be a set of items. An **itemset** is a subset of **I**. Let **D** be a transaction database where each record (transaction) is an itemset.  
-
-- **Frequency** of an itemset is the number of transactions including the itemset.  
-- **Frequent itemsets** satisfy a minimum support threshold (**minsupp**).  
-
 Each item in the database is associated with two weights:  
 1. **Internal utility:** e.g., quantity.  
 2. **External utility:** e.g., unit profit.  
