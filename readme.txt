@@ -1,109 +1,112 @@
- 					######################################################################
-					SATCHUIM: SAT-based Closed High Utility Itemset Mining 
-					Coded by Said Jabbour, Amel Hidouri,   e-mail:{jabbour,hidouri}@cril.fr 
-					######################################################################
 
+# SATCHUIM: SAT-based Closed High Utility Itemset Mining  
+**Developed by:** Said Jabbour, Amel Hidouri  
+**Contact:** {jabbour,hidouri}@cril.fr  
 
-The code in this repository was written in  C++ using miniSAT solver for model enumeration.
+---
 
+## Table of Contents
+1. [Problem Definition](#problem-definition)  
+2. [Input File Format](#input-file-format)  
+3. [How to Execute](#how-to-execute)  
+4. [Example](#example)  
 
-1. Problem Definition
-2. Input File Format
-3. How to Execute
-4. Example
+---
 
+## Problem Definition  
 
-################################
-####   Problem Definition   ####
-################################
+Let **I** be a set of items. An **itemset** is a subset of **I**. Let **D** be a transaction database where each record (transaction) is an itemset.  
 
-Let I be a set of items. An itemset is a subset of I. Let D be a transaction
-database such that each record (called transaction) is an itemset. Frequency
-of an itemset is the number of transactions including the itemset. For a
-given a minimum support threshold minsupp (called support), an itemset is said to be frequent if its frequency is no less than minsupp.
-Each item in the database is associated two weights:
-- an internal weight called internal utility, e.g. quantity.
-- an external weight called external utility, e.g. unit profit.
-The utility of an item is the product of its internal by its external utility. Furthermore, the utility of an itemset is the sum
-of utilities of  each item including in that itemset.
-An itemset is called High Utility Itemset if its utility is greater than a given minimum utility threshold minutil.
+- **Frequency** of an itemset is the number of transactions including the itemset.  
+- **Frequent itemsets** satisfy a minimum support threshold (**minsupp**).  
 
+Each item in the database is associated with two weights:  
+1. **Internal utility:** e.g., quantity.  
+2. **External utility:** e.g., unit profit.  
 
-################################
-####   Input File Format  ####
-################################
+The utility of an item is the product of its internal and external utility. The utility of an itemset is the sum of the utilities of its items.  
+An itemset is called a **High Utility Itemset (HUI)** if its utility is greater than a given minimum utility threshold (**minutil**).  
 
+---
 
-A  transactional data is  in the form of a text file with each line representing a transaction (items : TWU : utilities)  and consists of:
--  A set of items represented by integers.
-- The total utility of items in this transaction.
-- The utility of each item of this transaction.
+## Input File Format  
 
-The input file is a CNF formula where each line ends with a 0 (zero). This is an example of  a  line in the cnf input file:
-1 2 3 4  -1 26 -1 5 6 7 8 0
+A transactional dataset is stored as a text file where each line represents a transaction in the format:  
+```
+items : TWU : utilities
+```
 
-which means that:
+- **items:** A set of integers representing the items in the transaction.  
+- **TWU:** The total utility of the items in the transaction.  
+- **utilities:** A list of integers representing the utility of each item in the transaction.  
 
-The items are 1 2 3 4
+### CNF Input File Example  
+In the CNF file, fields are separated by `-1`, and each line ends with `0`.  
 
-the total utility of items is 26
+Example:  
+```
+1 2 3 4 -1 26 -1 5 6 7 8 0
+```
 
-The items utilities are  5 6 7 8
+This line represents:  
+- **Items:** `1 2 3 4`  
+- **Total utility (TWU):** `26`  
+- **Utilities:** `5 6 7 8`  
 
-The three fields are separated by -1.
+**Note:** For datasets from SPMF ([link](https://www.philippe-fournier-viger.com/spmf/index.php?link=datasets.php)), replace `:` with `-1` to match the required format.  
 
-Remark: In typical transaction database for utility mining (found in SPMF https://www.philippe-fournier-viger.com/spmf/index.php?link=datasets.php) the format is quite different from the one that we use  here (here an example of a line 1 2 3 4:26:5 6 7 8). So, one needs just to replace ':' by '-1'.
+---
 
+## How to Execute  
 
-################################
-####   How to Execute  ####
-################################
+1. Unzip the tool package.  
+2. Navigate to the `core` directory.  
+3. Compile the code: `make`  
+4. Ensure the executable has the correct permissions: `chmod +x ./SATCHUIM`  
+5. Execute the tool:  
+   ```bash
+   ./SATCHUIM -minutil=mintuil_threshold -closed=0/1 -verb=ver cnf_filename
+   ```
 
+### Command Line Options  
+- **cnf_filename:** The filename of the input transaction database.  
+- **-minutil:** Minimum utility threshold (integer).  
+- **-closed:**  
+  - `1`: Mine closed high utility itemsets.  
+  - `0`: Mine all itemsets (no closedness constraint).  
+- **-verb:** Verbosity level:  
+  - `1`: Default.  
+  - `3`: Display all itemsets.  
 
-1. Unzip the file
-2. cd core
-3.make
-4. ./SATCHUIM -minutil=mintuil_threshold -closed=0/1 -verb=ver cnf_filename
+---
 
-   ==== Command Line Options  ====
+## Example  
 
-    -"cnf_filename" is the filename of the input transaction database.
-    -minutil: the value of the minimum utility threshold (an integer)
-    -closed: 1:for mining closed high utility itemsets; 0:all itemsets (without closedness constraint)
-    -verb=verbosity: 1: Default; 3:to display all itemsets
-    -cnf_file: input file: it must be a CNF
+To find all closed high utility itemsets in `chess.txt` with a minimum utility threshold of `650000`, use:  
+```bash
+./SATCHUIM -minutil=650000 -closed=1 ../instance/chess.txt
+```
 
-################################
-####   Example  ####
-################################
-- to find all closed high utility itemsets in "chess.txt" in instance folder,  for minimum utility no less than 650000:
-
- ./SATCHUIM -minutil=650000 -closed=1 ../datasets/chess.txt 
-
-the output is:
-
-**********************************************************************************************************************************************************
- ===============================================[ Problem Statistics ]==================================================
-<> SATCHUIM : SAT-based Closed High Utility Itemset Mining
-<> minUtil : 650000 
+### Sample Output  
+```plaintext
+==============================================[ Problem Statistics ]==================================================
+<> SATCHUIM: SAT-based Closed High Utility Itemset Mining
+<> minUtil  : 650000 
 <> instance : ../datasets/chess.txt
-<> closed? : 1 
+<> closed?  : 1 
 
 ---------------------------------------------------------------------------------------------------
-  DataBase Description          |-- #items    :         75       
-                                |-- #transactions    :       3196      
+  DataBase Description          |-- #items          :         75       
+                                |-- #transactions   :       3196      
 ---------------------------------------------------------------------------------------------------
- =======================================================================================================================
----------------------------------------------------------------------------------------------------
-                               |-- #patterns  :              46   
-  SAT's Output                 |-- #conflicts  : 1466       
-                               |-- #clauses  :         4000404   
----------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------
-                                |-- CPU time    : 0.813679 s 
-                                |-- #restarts   : 1
-  More statistics               |-- #conflicts  : 1466          (1802 /sec) 
-                                |-- #decisions  : 1508          (0.00 % random) (1853 /sec) 
-                                |-- #propagations : 3370583       (4142399 /sec) 
-                                |-- #conflict literals   : 0             (-nan % deleted) 
----------------------------------------------------------------------------------------------------
+  #patterns                     | 46  
+  CPU time                      : 0.671154 s
+SATISFIABLE
+```
+
+---
+
+### Additional Notes  
+- This tool was compiled and tested on an **Ubuntu** system.  
+- Ensure that the input file paths are correct and accessible.  
+- Use `chmod` to make the tool executable if needed.  
