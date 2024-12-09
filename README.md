@@ -53,13 +53,9 @@ This line represents:
 
 ---
 
-## How to Execute  
-
-1. Unzip the tool package.  
-2. Navigate to the `core` directory.  
-3. Compile the code: `make`  
-4. Ensure the executable has the correct permissions: `chmod +x ./SATCHUIM`  
-5. Execute the tool:  
+## How to Execute   
+1. Ensure the executable has the correct permissions: `chmod +x SATCHUIM`  
+2. Execute the tool:  
    ```bash
    ./SATCHUIM -minutil=mintuil_threshold -closed=0/1 -verb=ver cnf_filename
    ```
@@ -70,8 +66,7 @@ This line represents:
 - **-closed:**  
   - `1`: Mine closed high utility itemsets.  
   - `0`: Mine all itemsets (no closedness constraint).  
-- **-verb:** Verbosity level:  
-  - `1`: Default.  
+- **-verb:** Verbosity level:   
   - `3`: Display all itemsets.  
 
 ---
